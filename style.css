@@ -529,7 +529,7 @@ nav a {
 .product-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.226);
   color: black;
 }
 .product-grid {
@@ -1745,7 +1745,7 @@ nav a.active::after {
 }
 
 .mega-item:hover {
-    background: rgba(0, 238, 255, 0.1);
+    background: rgba(0, 238, 255, 0.397);
     transform: translateY(-5px);
     border-color: rgba(0, 238, 255, 0.4);
 }
@@ -1934,7 +1934,7 @@ body.loaded #preloader {
   max-width: 800px; /* Maximum width for large screens */
   background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 238, 255, 0.418);
   border-radius: 12px;
   padding: 20px;
   visibility: hidden;
