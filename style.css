@@ -2197,26 +2197,6 @@ footer {
   transform: translate(0, 0);
   visibility: visible;
 }
-@media (max-width: 768px) {
-  .footer-links .nav-dropdown {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .footer-links .dropdown-menu {
-    position: relative;
-    text-align: center;
-    width: 100%;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  .footer-links .dropdown-menu a {
-    margin: 5px 0;
-  }
-}
 /* Hide mobile toggle elements on Desktop */
 #check, .menu-label {
     display: none;
@@ -2279,5 +2259,92 @@ footer {
     .nav-dropdown .dropdown-menu {
         position: static !important;
         display: none;
+    }
+}
+/* --- Footer Products Alignment Fix (Mobile & Tablet) --- */
+@media (max-width: 768px) {
+    /* Target the dropdown specifically inside the footer */
+    .footer-links .nav-dropdown {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Centers the "Products" label */
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Make the "Products" title look like a normal link */
+    .footer-links .has-dropdown {
+        padding: 10px 0;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Force the sub-menu to be visible and stacked vertically */
+    .footer-links .dropdown-menu {
+        position: static !important; /* Removes the "floating" behavior */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        transform: none !important;
+        width: 100%;
+    }
+
+    /* Style the sub-links (Automation, Solar, etc.) */
+    .footer-links .dropdown-menu a {
+        padding: 8px 0 !important;
+        font-size: 0.9rem !important;
+        color: var(--text-light) !important;
+        border: none !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Optional: Small bullet or dash to indicate sub-items */
+    .footer-links .dropdown-menu a::before {
+        content: "- ";
+        color: var(--neon-accent);
+    }
+}
+/* --- Footer Dropdown Visibility Fix (Small Screens) --- */
+@media (max-width: 768px) {
+    /* Target only the dropdowns inside the footer */
+    footer .nav-dropdown .dropdown-menu {
+        display: none !important; /* Hide it by default */
+        position: static !important;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        width: 100%;
+        background: transparent !important;
+        box-shadow: none !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    /* If you want it to show ONLY when the parent is clicked/active */
+    footer .nav-dropdown.active .dropdown-menu {
+        display: flex !important;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+    }
+    
+    /* Ensure the "Products" text is centered and clickable */
+    footer .footer-links .has-dropdown {
+        display: block;
+        text-align: center;
+        cursor: pointer;
+        padding: 5px 0;
     }
 }
