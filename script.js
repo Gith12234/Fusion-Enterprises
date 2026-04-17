@@ -152,3 +152,104 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+// ===================================================
+//  PROFESSIONAL UPGRADES — New Animations & Features
+// ===================================================
+
+// ── Sticky Header Scroll Class ──
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.sticky-header');
+  if (header) {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  }
+});
+
+// ── Typing Animation ──
+(function initTyping() {
+  const el = document.getElementById('typed-text');
+  if (!el) return;
+
+  const words = [
+    'PLCs & HMIs',
+    'Solar Inverters',
+    'VFDs & Contactors',
+    'Lithium Batteries',
+    'Power Tools',
+    'Electrical Breakers'
+  ];
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function tick() {
+    const current = words[wordIndex];
+    if (deleting) {
+      el.textContent = current.slice(0, --charIndex);
+    } else {
+      el.textContent = current.slice(0, ++charIndex);
+    }
+
+    let delay = deleting ? 60 : 110;
+
+    if (!deleting && charIndex === current.length) {
+      delay = 1800;
+      deleting = true;
+    } else if (deleting && charIndex === 0) {
+      deleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      delay = 400;
+    }
+    setTimeout(tick, delay);
+  }
+  setTimeout(tick, 800);
+})();
+
+// ── Counter Animation ──
+(function initCounters() {
+  const counters = document.querySelectorAll('.stat-number');
+  if (!counters.length) return;
+
+  const easeOutQuad = t => t * (2 - t);
+
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.target, 10);
+    const duration = 1800;
+    let start = null;
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const value = Math.floor(easeOutQuad(progress) * target);
+      el.textContent = value;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  };
+
+  const statsSection = document.getElementById('hero-stats');
+  if (!statsSection) return;
+
+  let counted = false;
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !counted) {
+      counted = true;
+      counters.forEach(el => animateCounter(el));
+    }
+  }, { threshold: 0.4 });
+
+  observer.observe(statsSection);
+})();
+
+// ── Smooth Anchor Scroll (for "Explore Products" button) ──
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[href^="#"]');
+  if (!link) return;
+  const target = document.querySelector(link.getAttribute('href'));
+  if (target) {
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+});
