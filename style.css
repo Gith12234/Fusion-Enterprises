@@ -2985,7 +2985,7 @@ header.sticky-header.scrolled {
         box-sizing: border-box;
     }
 
-  /* 3. Restore internal scrolling for compact product cards */
+ /* 3. Restore internal scrolling for compact product cards */
     .dropdown-content {
         max-height: 400px !important; /* Adjust this number to make the scroll area taller/shorter on mobile */
         overflow-y: auto !important;
