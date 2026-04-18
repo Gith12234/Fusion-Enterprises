@@ -2985,7 +2985,7 @@ header.sticky-header.scrolled {
         box-sizing: border-box;
     }
 
- /* 3. Restore internal scrolling for compact product cards */
+  /* 3. Restore internal scrolling for compact product cards */
     .dropdown-content {
         max-height: 400px !important; /* Adjust this number to make the scroll area taller/shorter on mobile */
         overflow-y: auto !important;
@@ -3005,7 +3005,7 @@ header.sticky-header.scrolled {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start; /* Changed from center to flex-start */
-    padding-left: 15px;      /* Adds a small gap from the left edge */
+    padding-left: 0px;      /* Adds a small gap from the left edge */
   }
 
   .logo-container {
@@ -3025,7 +3025,8 @@ header.sticky-header.scrolled {
   }
 
   header h1 {
-    font-size: 1.6rem;       /* Ensure the font isn't pushing off-screen */
+    font-size: 40px;       /* Ensure the font isn't pushing off-screen */
     margin: 0;
+    text-align: center;
   }
 }
